@@ -54,7 +54,7 @@
             android:layout_marginRight="150dp"
             android:layout_marginLeft="120dp"
             android:text="Sign up"
-            android:textSize="26dp"
+            android:textSize="26dp"/>
 
     </LinearLayout>
 </LinearLayout>
