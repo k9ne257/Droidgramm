@@ -11,4 +11,6 @@ public class activity_signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
     }
+
+    //TODO clickable login text that returns you to login screen
 }

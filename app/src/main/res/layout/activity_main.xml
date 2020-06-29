@@ -48,11 +48,12 @@
             android:textSize="15dp"/>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#ffffff"
+            android:layout_gravity="center"
             android:layout_marginRight="150dp"
             android:layout_marginLeft="120dp"
+            android:textColor="#ffffff"
             android:text="Sign up"
             android:textSize="26dp"/>
 
