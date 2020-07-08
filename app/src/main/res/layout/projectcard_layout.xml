@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activties.MainActivity"
+    android:background="#ffffff"
+    android:padding="40dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="371dp"
+        android:layout_height="203dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="200dp"
+        android:background="#ff66cc"
+        android:src="@drawable/v" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DRONE"
+        android:textSize="60dp"/>
+
+</LinearLayout>
