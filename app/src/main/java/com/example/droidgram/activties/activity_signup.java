@@ -20,7 +20,7 @@ public class activity_signup extends AppCompatActivity {
     }
 
     public void login_clickable(View view) {
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
 
