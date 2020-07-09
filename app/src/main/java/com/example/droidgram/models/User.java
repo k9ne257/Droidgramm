@@ -15,7 +15,7 @@ public class User {
     /**
      * Add a user with skills and projects
      * */
-    public User(int followers, int numberOfProjects, int following, String username, String location, List<Skill> skills, List<Project> projects) {
+    private User(String username, int followers, int numberOfProjects, int following, String location, List<Skill> skills, List<Project> projects) {
         this.followers = followers;
         this.numberOfProjects = numberOfProjects;
         this.following = following;
@@ -28,12 +28,19 @@ public class User {
     /**
     * Add a user without skills and projects
     * */
-    public User(int followers, int numberOfProjects, int following, String username, String location) {
+    private User(String username, int followers, int numberOfProjects, int following, String location) {
         this.followers = followers;
         this.numberOfProjects = numberOfProjects;
         this.following = following;
         this.username = username;
         Location = location;
+    }
+
+    /**
+     * Add new user trough this method
+     * */
+    public User addUser(int followers, int numberOfProjects, int following, String username, String location, List<Skill> skills, List<Project> projects) {
+        return new User(username, followers, numberOfProjects, following, location, skills, projects);
     }
 
     //TODO Write tests for the following methods

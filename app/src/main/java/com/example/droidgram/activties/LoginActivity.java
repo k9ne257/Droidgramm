@@ -2,7 +2,6 @@ package com.example.droidgram.activties;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
                         user = ((EditText) findViewById(R.id.input_username_login)).getText().toString();
                         password = ((EditText) findViewById(R.id.input_password_login)).getText().toString();
                         if (validate(user,password) == true){
-                            loginSucess();
+                            loginSuccess();
                         }
                         else{
                             Toast.makeText(LoginActivity.this,"Login failed. Please try again", Toast.LENGTH_SHORT).show();
@@ -40,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         );
     }
 
-    private void loginSucess() {
+    private void loginSuccess() {
         Intent i = new Intent(this, ProfileActivity.class);
         startActivity(i);
         finish();
@@ -55,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signUpClickable(View view) {
-        Intent i = new Intent(this, activity_signup.class);
+        Intent i = new Intent(this, SignUpActivity.class);
         startActivity(i);
     }
 }
