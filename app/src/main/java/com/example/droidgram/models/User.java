@@ -3,10 +3,10 @@ package com.example.droidgram.models;
 import java.util.List;
 
 public class User {
+    private String username;
     private int followers;
     private int numberOfProjects;
     private int following;
-    private String username;
     private String Location;
     private List<Skill> skills;
     private List<Project> projects;
@@ -39,9 +39,24 @@ public class User {
     /**
      * Add new user trough this method
      * */
+    private User(String username) {
+        this.username = username;
+    }
+
+    /**
+     * Add new user trough this method
+     * */
+    public User addUser(String username){
+        return new User(username);
+    }
+
     public User addUser(int followers, int numberOfProjects, int following, String username, String location, List<Skill> skills, List<Project> projects) {
         return new User(username, followers, numberOfProjects, following, location, skills, projects);
     }
+
+    /**
+     * Add user withoug any other info
+     * */
 
     //TODO Write tests for the following methods
 

@@ -61,8 +61,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     private String validate(String firstName, String lastName, String user, String email, String password, String passwordConfirm) {
         //TODO this method should validate if all input fiels are filled correctly and return and 'errorMessage if not'
-
-        if (false){
+        //TODO Validation of username requires a duplicate check with usernames already in the DB
+        errorMessage = "Please fill out all fields";
+        if (true){
             return errorMessage;
         }
 

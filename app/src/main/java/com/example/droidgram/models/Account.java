@@ -13,13 +13,13 @@ public class Account {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+
+        //TODO should craete new user with the username
     }
 
-    public Account addAccount(String firstName, String lastName, String user, String email, String password) {
+    public static Account addAccount(String firstName, String lastName, String user, String email, String password) {
         return new Account(firstName,lastName, user, email, password);
     }
-
-
 
     public String getUser() {
         return user;
