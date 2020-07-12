@@ -1,4 +1,4 @@
-package com.example.droidgram;
+package com.example.droidgram.services;
 
 import com.example.droidgram.models.Account;
 import com.example.droidgram.services.AccountCreator;
