@@ -40,7 +40,11 @@ public class User {
      * Add new user trough this method
      * */
     private User(String username) {
+        this.followers = 0;
+        this.numberOfProjects = 0;
+        this.following = 0;
         this.username = username;
+        Location = "";
     }
 
     /**

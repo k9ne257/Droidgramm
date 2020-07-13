@@ -8,22 +8,26 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-public class Validate {
+public class Validator {
     Connection con = new DBConnectionService().getCon();
+    private Boolean valid = true;
 
 
-    public boolean validateUsername(Account acc){
-        String username = acc.getUser();
-        String query = "Select * From accounts Where username = '" + username + "';";
+    public boolean validateLogin(String inputUsername, String inputPassword){
+
+        String query = "Select * From accounts Where username = '" + inputUsername + "';";
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()){
                 String userDB = rs.getString(3);
-                String passwprdDB = 
-                if()
+                String passwprdDB = rs.getString(5);
+                if(inputUsername.equals(userDB) && inputPassword.equals(passwprdDB)){
+                    return valid;
+                }
             }
+            return !valid;
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -31,10 +35,5 @@ public class Validate {
         return false;
     }
 
-    public boolean validatePassword(Account acc){
-        String username = acc.getPassword();
-        return false;
-
-    }
 
 }

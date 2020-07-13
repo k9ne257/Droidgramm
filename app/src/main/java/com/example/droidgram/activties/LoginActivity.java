@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.droidgram.R;
+import com.example.droidgram.services.Validator;
 
 public class LoginActivity extends AppCompatActivity {
     private String user;
@@ -28,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         user = ((EditText) findViewById(R.id.input_username_login)).getText().toString();
                         password = ((EditText) findViewById(R.id.input_password_login)).getText().toString();
-                        if (validate(user,password) == true){
+                        if (validate(user,password)){
                             loginSuccess();
                         }
                         else{
@@ -46,11 +47,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean validate(String user, String password) {
-        //TODO login process
-        if (user.equals("admin") && password.equals("admin")){
-            return true;
-        }
-        return false;
+        //TODO manual and unit Tests for this method needed
+        Validator v = new Validator();
+        return v.validateLogin(user,password);
     }
 
     public void signUpClickable(View view) {
