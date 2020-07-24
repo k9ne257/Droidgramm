@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         user = ((EditText) findViewById(R.id.input_username_login)).getText().toString();
                         password = ((EditText) findViewById(R.id.input_password_login)).getText().toString();
-                        if (validate(user,password)){
+                        if (validate(user,password) == true){
                             loginSuccess();
                         }
                         else{
@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     private boolean validate(String user, String password) {
         //TODO manual and unit Tests for this method needed
         Validator v = new Validator();
-        return v.validateLogin(user,password);
+        return !v.validateLogin(user,password);
     }
 
     public void signUpClickable(View view) {

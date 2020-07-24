@@ -10,15 +10,10 @@ import java.sql.Statement;
 public class Usermanager {
 
     Connection con = new DBConnectionService().getCon();
-    User user;
     Boolean successfull;
 
-    public Usermanager(User user) {
-        this.user = user;
-    }
-
-    public void remove_from_DB(){
-        //TODO this querry should delete a row from the account tabl in the DB
+    public void remove_from_DB(User user){
+        //TODO this querry should delete a row from the account table in the DB
         String query ="DELETE FROM accounts WHERE username ='" + user.getUsername() + "';";
         try {
             Statement st = con.createStatement();
@@ -37,7 +32,7 @@ public class Usermanager {
 
     }
 
-    public void add_to_DB(){
+    public void add_to_DB(User user){
         //TODO manually test this method
         String query ="insert into users values ('" +
                 user.getUsername() + "', '" +

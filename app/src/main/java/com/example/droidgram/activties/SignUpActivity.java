@@ -2,7 +2,6 @@ package com.example.droidgram.activties;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +10,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.droidgram.R;
+import com.example.droidgram.manager.AccountManager;
+import com.example.droidgram.models.Account;
+import com.example.droidgram.services.Validator;
 
 public class SignUpActivity extends AppCompatActivity {
     private String user;
@@ -19,7 +21,7 @@ public class SignUpActivity extends AppCompatActivity {
     private String email;
     private String password;
     private String passwordConfirm;
-    private String errorMessage;
+    private String hintMessage;
 
     Button signupButton;
 
@@ -41,15 +43,18 @@ public class SignUpActivity extends AppCompatActivity {
                         passwordConfirm = ((EditText) findViewById(R.id.input_password_confirm)).getText().toString();
 
 
-                        if(validate(firstName, lastName, user, email, password, passwordConfirm).equals("valid")){
+                        hintMessage = validate(firstName, lastName, user, email, password, passwordConfirm);
+                        if(hintMessage.equals("valid")){
                             //TODO this should add a User account to the DB with the details provided
+                            Account acc = Account.addAccount(firstName, lastName, user, email, password);
+                            AccountManager accountManager = new AccountManager();
+                            accountManager.add_to_DB(acc);
 
                             Intent i = new Intent(SignUpActivity.this, UserInfoActivity.class);
                             startActivity(i);
-                            finish();
                         }
                         else{
-                            Toast.makeText(SignUpActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this, hintMessage, Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -60,16 +65,33 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     private String validate(String firstName, String lastName, String user, String email, String password, String passwordConfirm) {
-        //TODO this method should validate if all input fiels are filled correctly and return and 'errorMessage if not'
+        Validator validator = new Validator();
         //TODO Validation of username requires a duplicate check with usernames already in the DB
-        errorMessage = "Please fill out all fields";
-        if (true){
-            return errorMessage;
+
+        if (firstName.equals("")){
+            return "Please enter your first name";
+        }
+        if (lastName.equals("")){
+            return "Please enter your last name";
+        }
+        if (user.equals("")){
+            return "Please enter a user name";
+        }
+
+        if (validator.validateEmailInput(email)) {
+            return "Please enter a valid email ";
+        }
+
+        if (validator.validatePassowordInput(password)) {
+            return "Password must be at least 6 characters";
+        }
+
+        if (!password.equals(passwordConfirm) && !(password.equals(""))){
+            return "passwords need to match";
         }
 
         return "valid";
     }
-
 
     public void login_clickable(View view) {
         Intent i = new Intent(this, LoginActivity.class);
